@@ -1,0 +1,54 @@
+#bodywrap {
+	width:600px; 
+	padding:25px;
+	margin:auto; 
+	font-family : Tahoma,helvetica,arial,sans-serif;
+}
+#initialoptions {
+	text-align:center;
+}
+.subjectresponse {
+	width:550px;
+	min-height400px; 
+	border:1px solid #ccc; 
+	float:left; clear:both; 
+	margin:15px; 
+	border-radius : 3px; 
+	box-shadow : 0 0 7px -2px gray;
+}
+.studentname {
+	font-size:1.5em;
+}
+h3 {
+	padding:0; text-transform: capitalize;
+}
+#cannedresponses {
+	text-align : center;
+}
+#cannedresponses div {
+	padding : 10px;
+}
+#cannedresponses select {
+	margin:0px 0 10px 0px; 
+	text-transform: capitalize;
+}
+.message {
+	clear:both;
+	text-align:left;
+}
+input, select, button {font-size:20px; 
+	height:30px;
+	margin:10px;
+}
+#allmessages {
+	margin-bottom:100px; 
+	min-height: 400px;
+	text-align: left;
+}
+a#scrolltotop {
+	color:gray;
+	text-align:center;
+	margin-top:30px;
+	text-decoration: none;
+	width:100%;
+}
