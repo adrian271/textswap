@@ -1,6 +1,6 @@
 $(document).ready(function(){
 			
-			$('.starteroption').not('#formatspacing').change(function(){
+			$('.starteroption').not('#formatspacing').change(function(){ //Clear comment choice boxes when changing options
 				$('#cannedresponses').html("");
 			});
 			
@@ -19,7 +19,7 @@ $(document).ready(function(){
 				var subjobj = obj.subjects[i];
 				var selections = '<option value="">--</option>';
 				for (var j = 0; j<subjobj.responses.length;j++){
-					var addname = subjobj.responses[j].response;
+					var addname = subjobj.responses[j].response; // Could make this one statement by chaining functions
 					addname = addname.replace(/\s{2,}/g, ' ');
 					addname = addname.replace(/--name--/g,name);
 					addname = addname.replace(/--heshe--/g,heshe);
@@ -54,11 +54,11 @@ $(document).ready(function(){
 			$('#allmessages').click(function(){
 		        if (document.selection) {
 		            var range = document.body.createTextRange();
-		            range.moveToElementText(document.getElementById('allmessages'));
+		            range.moveToElementText($('#allmessages'));
 		            range.select();
 		        } else if (window.getSelection) {
 		            var range = document.createRange();
-		            range.selectNode(document.getElementById('allmessages'));
+		            range.selectNode($('#allmessages'));
 		            window.getSelection().addRange(range);
 		        }
 		    });
@@ -79,43 +79,38 @@ $(document).ready(function(){
 			 	$('#allmessages').html("");
 		 	});
 		 	
-		 	var consolemessage = "";
+		 	/*var consolemessage = "";   //This is used for extracting all comments for review
 		 	$('#cannedresponses option').each(function(){
 			 	consolemessage += $(this).val()+" ";
 		 	});
-		 	console.log(consolemessage);
+		 	console.log(consolemessage);*/
 		 	
 	 	}; //end generateFields function
 	 	
-	 	
 			
-			$('#responseoptions').click(function(event){
-				event.preventDefault();
+		$('#responseoptions').click(function(event){
+			event.preventDefault();
+			generateFields();
+		});
+		$('#studentname, #gender, #responseoptions').keyup(function(event){
+			if (event.keyCode == 13) {
 				generateFields();
-			});
-			$('#studentname, #gender, #responseoptions').keyup(function(event){
-				if (event.keyCode == 13) {
-					generateFields();
-				}
-			});
-			
-			// Remember Formatting
-			if (localStorage.lineformat) {
-				$('#formatspacing #'+localStorage.lineformat).attr('selected','selected');
 			}
-			$('#formatspacing').change(function(){
-				localStorage.lineformat = $('#formatspacing option:selected').attr('id');
-			});
-			
-			
-			//Remember Grade
-			if (localStorage.grade) {
-				$('#gradeselect #'+localStorage.grade).attr('selected','selected');
-			}
-			$('#gradeselect').change(function(){
-				localStorage.grade = $('#gradeselect option:selected').attr('id');
-			});
-	 	
-	 	
-	 	
-	});
+		});
+		
+		// Remember Formatting
+		if (localStorage.lineformat) {
+			$('#formatspacing #'+localStorage.lineformat).attr('selected','selected');
+		}
+		$('#formatspacing').change(function(){
+			localStorage.lineformat = $('#formatspacing option:selected').attr('id');
+		});
+		
+		//Remember Grade
+		if (localStorage.grade) {
+			$('#gradeselect #'+localStorage.grade).attr('selected','selected');
+		}
+		$('#gradeselect').change(function(){
+			localStorage.grade = $('#gradeselect option:selected').attr('id');
+		});	 	
+});
